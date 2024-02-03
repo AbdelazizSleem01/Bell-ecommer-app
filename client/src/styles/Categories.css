@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
+
+/* root color */
+:root {
+    --Black: #000000;
+    --Pink: #996699;
+    --BrightBlue: #006699;
+    --grey: #cccccc;
+    --White: #fff;
+    /* font */
+    --font-primary: 'Rubik Burned', sans-serif;
+    --font-second: 'Teko', sans-serif;
+}
+
+.title{
+    text-align: center;
+    margin-top: 27px;
+}
+
+.categories{
+    .btn-category{
+        background-color: var(--Pink);
+        width: 80%;
+        margin: 1em auto;
+        padding: .5em;
+        text-align: center;
+        color: var(--White);
+        font-size: 24px;
+        font-weight: 700;
+        font-family: var(--font-primary);
+        letter-spacing: 2px;
+        display: flex;
+        justify-content: center;
+    }
+}

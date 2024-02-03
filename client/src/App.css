@@ -1,0 +1,21 @@
+/* root color */
+.root {
+  --Black: #000000;
+  --Pink: #996699;
+  --BrightBlue: #006699;
+  --grey: #cccccc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.Loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

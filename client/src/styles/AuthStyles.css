@@ -1,0 +1,126 @@
+/* ===================================
+========= register page ============  */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
+
+/* root color */
+:root {
+    --Black: #000000;
+    --Pink: #996699;
+    --BrightBlue: #006699;
+    --grey: #cccccc;
+    --White: #fff;
+    /* font */
+    --font-primary: 'Rubik Burned', sans-serif;
+    --font-second: 'Teko', sans-serif;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & form {
+        margin: 60px 0;
+        box-shadow: var(--Black) 3px 5px 15px;
+        padding: 20px;
+        background-color: var(--White);
+        width: 370px;
+
+        & .title {
+            text-align: center;
+            margin:  auto 15px;
+            padding:  15px;
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: var(--Black);
+        }
+
+        & input {
+            border: none;
+            border-bottom: 1px solid var(--Black);
+            border-radius: 0;
+        }
+
+        & .btn {
+            border: 1px solid var(--Black);
+            border-radius: 0;
+            background-color: var(--Black);
+            color: var(--White);
+            width: 75%;
+            display: flex;
+            justify-content: center;
+            
+            &:hover {
+                border: 1px solid black;
+                background: var(--Black);
+                background: -webkit-linear-gradient(to right,
+                        #434343,
+                        var(--Black));
+                background: linear-gradient(to right,
+                        #434343,
+                        var(--Black));
+            }
+        }
+    }
+}
+
+.form-dash-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+    & form {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+
+        & .title {
+            text-align: center;
+            margin:  auto 15px;
+            padding:  15px;
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-family: "Playfair Display", serif;
+        }
+
+        & input {
+            border: none;
+            border-bottom: 1px solid #000;
+            border-radius: 0;
+        }
+
+        & .btn {
+            border: 1px solid black;
+            border-radius: 0;
+            background-color: #000;
+            color: white;
+            width: 75%;
+            display: flex;
+            justify-content: center;
+            
+            &:hover {
+                border: 1px solid black;
+                background: #000000;
+                background: -webkit-linear-gradient(to right,
+                        #434343,
+                        #000000);
+                background: linear-gradient(to right,
+                        #434343,
+                        #000000);
+            }
+        }
+    }
+}
+.bg{
+    background-color: #444444;
+    background-image: linear-gradient(0deg, #939393 0%, #000000 100%);
+}
+.hover:hover{
+    
+        background-color: #00000013;
+    
+}

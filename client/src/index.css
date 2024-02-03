@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400&family=Signika+Negative:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+
+/* root color */
+:root {
+  --Black: #000000;
+  --Pink: #996699;
+  --BrightBlue: #006699;
+  --grey: #cccccc;
+  --White: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  background-color: #111111;
+  transition: all .5s ease-in;
+  overflow-x: hidden;
+}
+
+/* =============================
+==========footer============= */
+
+.footer {
+
+
+  color: var(--White);
+  padding: 25px;
+  background: var(--Pink);
+  background: linear-gradient(to right, #8b8b8b, var(--Pink));
+
+  .web-title {
+    img{
+      background-color: var(--BrightBlue);
+    }
+    &:hover {
+      border: none;
+    }
+  }
+
+  .about-company {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    margin: 20px 0;
+  }
+
+  a {
+
+    text-decoration: none;
+    color: var(--White);
+    padding: 3px;
+
+    &:hover {
+      color: var(--Pink);
+      border-bottom: 1px solid var(--Pink);
+    }
+  }
+
+  h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-bottom: var(--BrightBlue) 2px solid;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    width: auto;
+  }
+
+  .social-network {
+    .Icons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      transition: all.5s ease-in;
+      background-color: var(--White);
+      border-radius: 5px;
+      text-decoration: none;
+
+      &:hover {
+        border: none;
+        transform: scale(1.2);
+        transition: all .5s ease;
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+    margin-bottom: -20px;
+
+    .company-link {
+      font-family: "Honk", system-ui;
+      display: flex;
+      justify-content: center;
+      font-size: 30px;
+      text-decoration: none;
+
+      &:hover {
+        border: none;
+
+      }
+    }
+  }
+}
+
+.dark {
+  .footer {
+    color: var(--White);
+    padding: 25px;
+    background: var(--Black);
+    background: -webkit-linear-gradient(to right, #6b6b6b, var(--Black));
+    background: linear-gradient(to right, #434343, var(--Black));
+  }
+}
+
+
+/* =================================
+======== page not found css ======= */
+.pnf {
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & h1 {
+    font-size: 100px;
+    font-weight: 700;
+  }
+
+  & h2 {
+    font-weight: normal;
+  }
+
+  .pnf-btn {
+    color: black;
+    border: 1px solid black;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: 10px;
+  }
+}
+
+.pnf-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* ========================================= */
+/* =========contact us ========= */
+.Green {
+  color: green;
+}
+
+.Red {
+  color: red;
+}
+
+.contactus {
+  margin: 30px auto 120px auto;
+
+  .form {
+    border-radius: 10px;
+    width: 100%;
+    background-color: var(--White);
+    background-image: url(../public/images/Contact1.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .form-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    p {
+      color: var(--White);
+      font-weight: 700;
+      font-size: 24px;
+      text-shadow: 1px 2px 3px var(--Black);
+    }
+  }
+
+  form {
+    background-color: var(--White);
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 25px;
+
+    .form-label {
+      color: var(--Black);
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    input {
+      border: 2px solid var(--Black);
+    }
+
+    textarea {
+      border: 2px solid var(--Black);
+    }
+  }
+
+
+  p {
+    font-size: 20px;
+    color: var(--White);
+  }
+}
+
+.dark {
+  .contactus {
+
+    .form {
+      background-image: url(../public/images/ContactPink.jpeg);
+      background-size: cover;
+      background-repeat: no-repeat;
+
+    }
+
+    p {
+      color: var(--Black);
+    }
+
+    .form {
+      background-color: var(--Black);
+    }
+
+    form {
+      background-color: var(--Black);
+
+      input {
+        border: 2px solid var(--Pink);
+      }
+
+      textarea {
+        border: 2px solid var(--Pink);
+      }
+
+      .form-label {
+        color: var(--White);
+
+      }
+    }
+
+    .form-group {
+
+      p {
+        color: var(--Black);
+        text-shadow: 1px 1px 2px var(--White);
+        font-weight: 900;
+      }
+    }
+  }
+}
+
+.invalid-feedback,
+.empty-feedback {
+  display: none;
+}
+
+.was-validated :placeholder-shown:invalid~.empty-feedback {
+  display: block;
+}
+
+.was-validated :not(:placeholder-shown):invalid~.invalid-feedback {
+  display: block;
+}
+
+.is-invalid,
+.was-validated :invalid {
+  border-color: #dc3545;
+}
+
+/* ============= mediaQuiry 992px ========= */
+@media screen and (max-width: 992px) {
+  .contactus {
+    .form-group {
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+/* ============= mediaQuiry 768px ========= */
+@media screen and (max-width: 768px) {
+  .contactus {
+
+    form {
+      margin-top: 250px;
+    }
+
+    .form-group {
+      margin-top: 140px;
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+/* ============= */
+
+.product-link {
+  text-decoration: none !important;
+  color: #000000 !important;
+}
+
+
+/* ========= spinner ======= */
+
+.loader {
+  --c: no-repeat linear-gradient(orange 0 0);
+  background:
+    var(--c), var(--c), var(--c),
+    var(--c), var(--c), var(--c),
+    var(--c), var(--c), var(--c);
+  background-size: 16px 16px;
+  animation:
+    l32-1 1s infinite,
+    l32-2 1s infinite;
+}
+
+@keyframes l32-1 {
+
+  0%,
+  100% {
+    width: 45px;
+    height: 45px
+  }
+
+  35%,
+  65% {
+    width: 65px;
+    height: 65px
+  }
+}
+
+@keyframes l32-2 {
+
+  0%,
+  40% {
+    background-position: 0 0, 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0, 50% 50%
+  }
+
+  60%,
+  100% {
+    background-position: 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0, 50% 0, 0 0, 50% 50%
+  }
+}
+
+/* ============ ScrollBar =========== */
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 1px 1px 5px var(--White);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--Pink);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--BrightBlue);
+
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #794979;
+}
+
+.dark {
+  background-color: rgb(245, 243, 243);
+  transition: all .5s ease-in;
+}
+
+.typing-animation {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #ccc, #666);
+  animation: pulseAnimation 1s infinite;
+  margin-right: 2px;
+}
+
+@keyframes pulseAnimation {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}

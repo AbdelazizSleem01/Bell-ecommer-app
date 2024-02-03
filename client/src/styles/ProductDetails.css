@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
+
+/* root color */
+:root {
+    --Black: #000000;
+    --Pink: #996699;
+    --BrightBlue: #006699;
+    --grey: #cccccc;
+    --White: #fff;
+    /* font */
+    --font-primary: 'Rubik Burned', sans-serif;
+    --font-second: 'Teko', sans-serif;
+}
+
+.Details-img {
+    background-color: var(--grey);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    box-shadow: var(--Pink) 4px 4px 12px;
+
+}
+
+.details {
+    background-color: var(--grey);
+    padding: 12px;
+    border-radius: 7px;
+    color: var(--White);
+    box-shadow: var(--Pink) 4px 4px 12px;
+
+    .name {
+        background-color: var(--grey);
+        width: 70%;
+        padding: 12px;
+        border: var(--Pink) 2px solid;
+        border-radius: 7px;
+        color: var(--Black);
+    }
+
+    h6 {
+        margin: 28px 0;
+        color: var(--Black);
+        text-shadow: none;
+        /* font-size: 39px; */
+        line-height: 41px;
+    }
+
+    .btn-cart {
+        background-color: var(--Pink);
+        padding: 12px;
+        border: var(--Black) 2px solid;
+        border-radius: 7px;
+        color: var(--White);
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.flex-wrap {
+    margin-left: 25px;
+}

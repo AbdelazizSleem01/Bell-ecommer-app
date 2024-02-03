@@ -1,0 +1,13 @@
+.ant-modal-close {
+    margin-left: -50px;
+}
+
+.model {
+    padding: 20px;
+}
+
+.ant-modal-content {
+    height: 22vh;
+    width: 100%;
+}
+
