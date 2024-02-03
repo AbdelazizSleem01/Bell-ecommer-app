@@ -32,4 +32,42 @@ Admin-only features:
 
 ## Installation
 
-1. Clone the repository:
+1. Clone the repository: https://github.com/AbdelazizSleem01/Bell-ecommer-app.git
+
+2. Install the dependencies for the server:
+
+cd ecommerce-store/server
+npm install
+
+Copy
+
+3. Install the dependencies for the client:
+
+cd ../client
+npm install
+
+Copy
+
+4. Start the server:
+
+cd ../server
+npm start
+
+Copy
+
+5. Start the client:
+
+cd ../client
+npm start
+
+Copy
+
+6. Access the application in your browser at `http://localhost:3000`.
+
+## NPM Package
+
+- [braintree](https://www.npmjs.com/package/braintree) - A library for integrating with the Braintree payment gateway.
+
+npm install braintree
+
+
