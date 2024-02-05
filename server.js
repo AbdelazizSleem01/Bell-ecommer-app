@@ -37,15 +37,6 @@ app.get('/', (req, res) => {
     )
 })
 
-app.get('/api/products', (req, res) => {
-    const { start, limit } = req.query;
-    const startIndex = parseInt(start) || 0;
-    const endIndex = startIndex + (parseInt(limit) || 8);
-    const products = allProducts.slice(startIndex, endIndex);
-
-    res.json({ products, hasMore: endIndex < allProducts.length });
-});
-
 
 
 app.listen(PORT, () => {
