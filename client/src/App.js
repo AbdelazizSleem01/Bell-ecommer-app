@@ -19,7 +19,6 @@ import CreateProduct from './components/pages/Admin/CreateProduct.js';
 import Users from './components/pages/Admin/Users.js';
 import Profile from './components/pages/user/Profile.js'
 import Order from './components/pages/user/Order.js'
-import GoogleAuth from './components/pages/Auth/GoogleAuth.js';
 import Products from './components/pages/Admin/Products.js';
 import UpdateProduct from './components/pages/Admin/UpdateProduct.js';
 import Search from './components/pages/Search.js';
@@ -80,7 +79,6 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/google-auth" element={<GoogleAuth />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/policy" element={<Policy />} />

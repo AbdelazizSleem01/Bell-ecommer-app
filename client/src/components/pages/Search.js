@@ -6,13 +6,14 @@ import { useTranslation } from 'react-i18next';
 import cookies from 'js-cookie';
 import '../../styles/HomePage.css'
 import '../../styles/SearchResult.css'
+import { useNavigate } from 'react-router-dom';
 
 
 const Search = () => {
 
 
     const [values] = useSearch()
-
+    const navigate = useNavigate();
 
     // Language
 
@@ -31,7 +32,7 @@ const Search = () => {
                     </h6>
                     <div className='d-flex flex-wrap justify-content-center'>
                         {values?.results.map((p) => (
-                            <Link key={p._id} className='product-link' to={`/dashboard/admin/product/${p.slug}`}>
+                            <div key={p._id} className='product-link' >
                                 <div className="card-home  m-2 p-2 " >
                                     <img src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`}
                                         className="card-img-top pb-3 mx-auto"
@@ -68,7 +69,9 @@ const Search = () => {
                                             <h6 className="card-text text-center ">{p.price}$</h6>
                                         </div>
                                         <div className='d-flex justify-content-center'>
-                                            <button className='btn btn-Details '>More Details
+                                            <button className='btn btn-Details '
+                                                onClick={() => navigate(`/product/${p.slug}`)}
+                                            >More Details
                                                 <span class="material-symbols-outlined">
                                                     visibility
                                                 </span>
@@ -82,7 +85,7 @@ const Search = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 </div>

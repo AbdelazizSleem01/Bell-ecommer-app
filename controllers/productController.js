@@ -246,7 +246,7 @@ export const productCountController = async (req, res) => {
 
 export const productListController = async (req, res) => {
     try {
-        const perPage = req.query.perPage || 2; 
+        const perPage = req.query.perPage || 18; 
         const page = Math.max(1, parseInt(req.params.page) || 1);
         const products = await productModel
             .find({})

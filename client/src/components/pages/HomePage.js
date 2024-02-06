@@ -79,7 +79,7 @@ const HomePage = () => {
     const loadMore = async () => {
         try {
             setLoading(true);
-            const perPage = 2;
+            const perPage = 18;
             const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-list/${page}?perPage=${perPage}`);
             setLoading(false);
             setProducts((prevProducts) => [...prevProducts, ...data?.products]);
