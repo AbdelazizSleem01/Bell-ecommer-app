@@ -29,7 +29,7 @@ function DashBoardHome() {
     //get all product length
     const getAllProducts = async () => {
         try {
-            const { data } = await axios.get('/api/v1/product/get-product')
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/product/get-product')
             setProducts(data.products);
             console.log(data)
 
@@ -46,7 +46,7 @@ function DashBoardHome() {
     //get all cat
     const getAllCategory = async () => {
         try {
-            const { data } = await axios.get("/api/v1/category/get-categories");
+            const { data } = await axios.get("https://bellissimo-ecommer-app.onrender.com/api/v1/category/get-categories");
             if (data?.success) {
                 setCategories(data?.category);
             }
@@ -67,7 +67,7 @@ function DashBoardHome() {
 
     const getAllUser = async()=> {
         try{
-            const {data} = await axios.get ('/api/v1/auth/users')
+            const {data} = await axios.get ('https://bellissimo-ecommer-app.onrender.com/api/v1/auth/users')
             setUsers(data?.user)
             console.log(data)
         }catch(error){

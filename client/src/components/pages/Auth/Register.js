@@ -22,7 +22,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const res = await axios.post(
-                "/api/v1/auth/register",
+                "https://bellissimo-ecommer-app.onrender.com/api/v1/auth/register",
                 { name, email, password, phone, address, answer }
             );
             if (res.data.success) {

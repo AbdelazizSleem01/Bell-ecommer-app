@@ -19,7 +19,7 @@ const Order = () => {
 
     const getOrders = async () => {
         try {
-            const { data } = await axios.get('/api/v1/auth/orders')
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/auth/orders')
             setOrders(data)
         } catch (err) {
             console.log('Error:', err)
@@ -71,7 +71,7 @@ const Order = () => {
                                                 <div className='row single-product flex-row' key={p._id}>
                                                     <div className='col-md-4'>
                                                         <img
-                                                            src={`/api/v1/product/product-photo/${p._id}`}
+                                                            src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`}
                                                             className="mx-auto"
                                                             alt={p.name}
                                                         />

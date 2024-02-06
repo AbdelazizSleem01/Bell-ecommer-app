@@ -31,7 +31,7 @@ const HomePage = () => {
 
     const getAllCategory = async () => {
         try {
-            const { data } = await axios.get('/api/v1/category/get-categories');
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/category/get-categories');
             if (data?.success) {
                 setCategories(data?.category)
             }
@@ -44,7 +44,7 @@ const HomePage = () => {
     const getAllProducts = async () => {
         try {
             const perPage = 2; // Set the number of products per page
-            const { data } = await axios.get(`/api/v1/product/product-list/${page}?perPage=${perPage}`);
+            const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-list/${page}?perPage=${perPage}`);
             setProducts(data?.products);
         } catch (error) {
             console.log('Error:', error);
@@ -55,7 +55,7 @@ const HomePage = () => {
 
     const getTotal = async () => {
         try {
-            const { data } = await axios.get('/api/v1/product/product-count');
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-count');
             setTotal(data?.total);
         } catch (error) {
             console.log('Error:', error);
@@ -80,7 +80,7 @@ const HomePage = () => {
         try {
             setLoading(true);
             const perPage = 2;
-            const { data } = await axios.get(`/api/v1/product/product-list/${page}?perPage=${perPage}`);
+            const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-list/${page}?perPage=${perPage}`);
             setLoading(false);
             setProducts((prevProducts) => [...prevProducts, ...data?.products]);
         } catch (error) {
@@ -109,7 +109,7 @@ const HomePage = () => {
 
     const filterProduct = async () => {
         try {
-            const response = await axios.post('/api/v1/product/product-filter', {
+            const response = await axios.post('https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-filter', {
                 checked,
                 radio,
             });
@@ -187,7 +187,7 @@ const HomePage = () => {
                         {products.map((product) => (
                             <div className="card-home col-md-6 p-2 " key={product._id}>
                                 <img
-                                    src={`/api/v1/product/product-photo/${product._id}`}
+                                    src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${product._id}`}
                                     className="card-img-top pb-3 mx-auto "
                                     alt={product.name}
                                 />

@@ -32,7 +32,7 @@ const Profile = () => {
         e.preventDefault();
         try {
             const { data } = await axios.put(
-                "/api/v1/auth/updateProfile", {
+                "https://bellissimo-ecommer-app.onrender.com/api/v1/auth/updateProfile", {
                 name,
                 email,
                 password,

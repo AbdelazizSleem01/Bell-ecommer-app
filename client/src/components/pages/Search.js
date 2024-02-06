@@ -33,7 +33,7 @@ const Search = () => {
                         {values?.results.map((p) => (
                             <Link key={p._id} className='product-link' to={`/dashboard/admin/product/${p.slug}`}>
                                 <div className="card-home  m-2 p-2 " >
-                                    <img src={`/api/v1/product/product-photo/${p._id}`}
+                                    <img src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`}
                                         className="card-img-top pb-3 mx-auto"
                                         alt={p.name}
                                     />

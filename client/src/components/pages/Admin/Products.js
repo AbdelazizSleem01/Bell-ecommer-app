@@ -11,7 +11,7 @@ const Products = () => {
 
     const getAllProducts = async () => {
         try {
-            const { data } = await axios.get('/api/v1/product/get-product')
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/product/get-product')
             setProducts(data.products);
         } catch (err) {
             console.log('Error: ', err)
@@ -66,7 +66,7 @@ const Products = () => {
                                     <tr key={p._id} className='tr-tbody'>
                                         <td>
                                             <Link className='product-link' to={`/dashboard/admin/product/${p.slug}`}>
-                                                <img src={`/api/v1/product/product-photo/${p._id}`} className="product-img" alt={p.name} />
+                                                <img src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`} className="product-img" alt={p.name} />
                                             </Link>
                                         </td>
                                         <td>{p.name}</td>

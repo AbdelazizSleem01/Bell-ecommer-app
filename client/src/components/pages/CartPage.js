@@ -61,7 +61,7 @@ const CartPage = () => {
     //getpayment
     const getToken = async () => {
         try {
-            const { data } = await axios.get('/api/v1/product/braintree/token');
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/product/braintree/token');
             setClientToken(data?.clientToken);
             // console.log(data.response)
         } catch (error) {
@@ -82,7 +82,7 @@ const CartPage = () => {
                 throw new Error("Payment instance is not available");
             }
             const { nonce } = await instance.requestPaymentMethod();
-            const { data } = await axios.post('/api/v1/product/braintree/payment', {
+            const { data } = await axios.post('https://bellissimo-ecommer-app.onrender.com/api/v1/product/braintree/payment', {
                 nonce,
                 cart
             });
@@ -123,7 +123,7 @@ const CartPage = () => {
                                 <div className='col-md-4'>
                                     <Link to={`/product/${p.slug}`}>
                                         <img
-                                            src={`/api/v1/product/product-photo/${p._id}`}
+                                            src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`}
                                             className=" pb-2 ps-2 mx-auto mt-3 p-2 "
                                             alt={p.name}
                                             width='120px'

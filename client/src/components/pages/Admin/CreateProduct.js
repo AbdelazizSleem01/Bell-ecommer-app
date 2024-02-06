@@ -24,7 +24,7 @@ const CreateProduct = () => {
     //get all category
     const getAllCategory = async () => {
         try {
-            const { data } = await axios.get("/api/v1/category/get-categories");
+            const { data } = await axios.get("https://bellissimo-ecommer-app.onrender.com/api/v1/category/get-categories");
             if (data?.success) {
                 setCategories(data?.category);
             }
@@ -52,7 +52,7 @@ const CreateProduct = () => {
             productData.append("category", category);
 
             const { data } = await axios.post(
-                "/api/v1/product/create-product",
+                "https://bellissimo-ecommer-app.onrender.com/api/v1/product/create-product",
                 productData
             );
 
@@ -131,7 +131,7 @@ const CreateProduct = () => {
                                 <input
                                     type="text"
                                     value={nameAR}
-                                    placeholder="write a name"
+                                    placeholder="اكتب الاسم بالعربي"
                                     className="form-control mx-auto"
                                     onChange={(e) => setNameAR(e.target.value)}
                                 />

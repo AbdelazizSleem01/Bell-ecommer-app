@@ -3,7 +3,6 @@ import Layout from '../../Layout/Layout'
 import UserMenu from '../../Layout/UserMenu'
 import { useAuth } from '../../../context/auth';
 import { useTranslation } from 'react-i18next';
-import cookies from 'js-cookie';
 
 const Dashboard = () => {
     const [auth] = useAuth();

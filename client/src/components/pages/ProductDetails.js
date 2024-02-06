@@ -24,7 +24,7 @@ const ProductDetails = () => {
         //Get single Product
         const getProduct = async () => {
             try {
-                const { data } = await axios.get(`/api/v1/product/get-product/${params.slug}`)
+                const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/get-product/${params.slug}`)
                 setProduct(data?.product);
                 getSimilarProduct(data?.product._id, data?.product.category._id);
             } catch (err) {
@@ -37,7 +37,7 @@ const ProductDetails = () => {
     //get similar product 
     const getSimilarProduct = async (pid, cid) => {
         try {
-            const { data } = await axios.get(`/api/v1/product/related-product/${pid}/${cid}`)
+            const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/related-product/${pid}/${cid}`)
             setRelatedProducts(data?.products)
         } catch (err) {
             console.log("error in getting related products", err);
@@ -49,7 +49,7 @@ const ProductDetails = () => {
             <div className="row container-fluid mt-3 ">
                 <div className='col-md-6 d-flex justify-content-center mt-5'>
                     <img
-                        src={`/api/v1/product/product-photo/${product._id}`}
+                        src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${product._id}`}
                         className=" Details-img w-100 mx-auto"
                         alt={product.name}
                     />
@@ -107,7 +107,7 @@ const ProductDetails = () => {
                         {relatedProducts?.map((p) => (
                             <div className="card-home p-2 mx-auto " >
                                 <img
-                                    src={`/api/v1/product/product-photo/${p._id}`}
+                                    src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`}
                                     className="card-img-top pb-3 mx-auto "
                                     alt={p.name}
                                 />

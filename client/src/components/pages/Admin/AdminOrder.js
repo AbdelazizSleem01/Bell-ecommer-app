@@ -16,7 +16,7 @@ const AdminOrder = () => {
 
     const getOrders = async () => {
         try {
-            const { data } = await axios.get('/api/v1/auth/all-orders')
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/auth/all-orders')
             setOrders(data)
         } catch (err) {
             console.log('Error:', err)
@@ -30,7 +30,7 @@ const AdminOrder = () => {
 
     const handleChange = async (orderId, value) => {
         try {
-            const { data } = await axios.put(`/api/v1/auth/orders-status/${orderId}`, { status: value });
+            const { data } = await axios.put(`https://bellissimo-ecommer-app.onrender.com/api/v1/auth/orders-status/${orderId}`, { status: value });
             getOrders();
         } catch (err) {
             console.log(err);
@@ -70,7 +70,7 @@ const AdminOrder = () => {
                                                             bordered={false}
                                                             onChange={(value) => handleChange(o._id, value)}
                                                             defaultValue={o?.status}
-                                                            style={{textAlign:"center"}}
+                                                            style={{ textAlign: "center" }}
                                                             dropdownStyle={{
                                                                 backgroundColor: "#996699",
                                                                 color: "#fff",
@@ -96,7 +96,7 @@ const AdminOrder = () => {
                                                 <div className='row single-product flex-row' key={p._id}>
                                                     <div className='col-md-4'>
                                                         <img
-                                                            src={`/api/v1/product/product-photo/${p._id}`}
+                                                            src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`}
                                                             className="mx-auto"
                                                             alt={p.name}
                                                         />

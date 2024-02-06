@@ -28,7 +28,7 @@ const UpdateProduct = () => {
 
     const getSingleProduct = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/product/get-product/${params.slug}`)
+            const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/get-product/${params.slug}`)
             setName(data.product.name);
             setNameAR(data.product.nameAR);
             setId(data.product._id);
@@ -51,7 +51,7 @@ const UpdateProduct = () => {
     //get all category
     const getAllCategory = async () => {
         try {
-            const { data } = await axios.get("/api/v1/category/get-categories");
+            const { data } = await axios.get("https://bellissimo-ecommer-app.onrender.com/api/v1/category/get-categories");
             if (data?.success) {
                 setCategories(data?.category);
             }
@@ -79,7 +79,7 @@ const UpdateProduct = () => {
             productData.append("category", category);
 
             const { data } = await axios.put(
-                `/api/v1/product/update-product/${id}`,
+                `https://bellissimo-ecommer-app.onrender.com/api/v1/product/update-product/${id}`,
                 productData
             );
             if (data?.success) {
@@ -100,7 +100,7 @@ const UpdateProduct = () => {
             const confirmBox = window.confirm('Are you sure to delete this Product?')
             if (!confirmBox) return
             const { data } = await axios.delete(
-                `/api/v1/product/delete-product/${id}`,
+                `https://bellissimo-ecommer-app.onrender.com/api/v1/product/delete-product/${id}`,
             );
             toast.success("Product Deleted Successfully");
             navigate("/dashboard/admin/products");
@@ -162,7 +162,7 @@ const UpdateProduct = () => {
                                 ) : (
                                     <div className="text-center">
                                         <img
-                                            src={`/api/v1/product/product-photo/${id}`}
+                                            src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${id}`}
                                             alt="product_photo"
                                             height={"200px"}
                                             className="img img-responsive"

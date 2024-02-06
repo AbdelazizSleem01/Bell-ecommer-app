@@ -7,26 +7,6 @@ import '../../styles/AdminDashBoard.css'
 const UserMenu = () => {
 
     //language 
-
-    const languages = [
-        {
-            code: 'en',
-            name: 'English',
-            country_code: 'gb',
-            imgSrc: "/images/usa.png"
-        },
-        {
-            code: 'ar',
-            name: 'العربية',
-            country_code: 'sa',
-            dir: 'rtl',
-            imgSrc: "/images/flag.png"
-
-        },
-    ];
-
-    const currentLanguageCode = cookies.get('i18next') || 'en';
-    const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
     const { t } = useTranslation();
 
     return (

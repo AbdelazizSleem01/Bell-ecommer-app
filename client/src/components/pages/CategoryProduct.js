@@ -19,7 +19,7 @@ const CategoryProduct = () => {
     }, []);
     const getProductByCat = async () => {
         try {
-            const { data } = await axios.get(`/api/v1/product/product-category/${params.slug}`)
+            const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-category/${params.slug}`)
             setProducts(data?.products)
             setCategory(data?.category)
         } catch (err) {
@@ -36,7 +36,7 @@ const CategoryProduct = () => {
                     <div className='d-flex flex-wrap '>
                         {products?.map((p) => (
                             <div className="card-home p-2  mx-auto" >
-                                <img src={`/api/v1/product/product-photo/${p._id}`}
+                                <img src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${p._id}`}
                                     className="card-img-top pb-3 mx-auto"
                                     alt={p.name}
                                 />

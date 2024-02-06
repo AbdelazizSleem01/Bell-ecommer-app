@@ -16,7 +16,7 @@ const Users = () => {
     // get all users 
     const getAllUser = async () => {
         try {
-            const { data } = await axios.get('/api/v1/auth/users')
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/auth/users')
             setUser(data?.user)
         } catch (err) {
             console.log(err)
@@ -31,7 +31,7 @@ const Users = () => {
         e.preventDefault();
 
         try {
-            const { data } = await axios.put(`/api/v1/auth/role-update/${selected._id}`,
+            const { data } = await axios.put(`https://bellissimo-ecommer-app.onrender.com/api/v1/auth/role-update/${selected._id}`,
                 { role: updateRole });
             if (data.success) {
                 setUser((prevUser) =>
