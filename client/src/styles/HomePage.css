@@ -141,7 +141,7 @@
     left: 46%;
     transform: translateX(-50%);
     width: 420px;
-    font-family: var(--font-second);
+    font-family: var(--font-arabic);
 }
 
 .form-control {
@@ -152,7 +152,7 @@
     background-color: var(--Pink);
     color: var(--White);
     border-radius: 2px;
-    font-size: 18px;
+    font-size: 23px;
 
     &:hover {
         background-color: var(--Black);
