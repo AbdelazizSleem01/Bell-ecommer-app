@@ -43,10 +43,12 @@ const HomePage = () => {
 
     const getAllProducts = async () => {
         try {
-            const perPage = 2; // Set the number of products per page
-            const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-list/${page}?perPage=${perPage}`);
+            setLoading(true)
+            const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-list/${page}`);
+            setLoading(false)
             setProducts(data?.products);
         } catch (error) {
+            setLoading(false)
             console.log('Error:', error);
         }
     };
@@ -79,10 +81,10 @@ const HomePage = () => {
     const loadMore = async () => {
         try {
             setLoading(true);
-            const perPage = 18;
+            const perPage = 12;
             const { data } = await axios.get(`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-list/${page}?perPage=${perPage}`);
             setLoading(false);
-            setProducts((prevProducts) => [...prevProducts, ...data?.products]);
+            setProducts([...products, ...data?.products]);
         } catch (error) {
             console.log('Error:', error);
             setLoading(false);
@@ -256,9 +258,9 @@ const HomePage = () => {
                         {products && products.length < total && (
                             <button
                                 className="btn btn-loading"
-                                onClick={() => {
-                                    setPage((prevPage) => prevPage + 1);
-                                    getAllProducts();
+                                onClick={(e) => {
+                                    e.defaultPrevented()
+                                    setPage(page + 1);
                                 }}
                                 disabled={loading}
                             >

@@ -93,13 +93,13 @@ const DarkMode = () => {
                                         i18next.changeLanguage(code);
                                     }}
                                 >
-                                    
+
                                     <img src={imgSrc} alt={name} className='ms-1' />
                                 </Link>
                             </span>
                         );
                     };
-                })};
+                })}
             </div>
             <div>
                 {

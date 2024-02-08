@@ -141,7 +141,7 @@
     left: 46%;
     transform: translateX(-50%);
     width: 420px;
-    font-family: var(--font-primary);
+    font-family: var(--font-second);
 }
 
 .form-control {
