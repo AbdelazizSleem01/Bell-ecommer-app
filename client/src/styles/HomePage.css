@@ -152,7 +152,7 @@
     background-color: var(--Pink);
     color: var(--White);
     border-radius: 2px;
-    font-size: 23px;
+    font-size: 21px;
 
     &:hover {
         background-color: var(--Black);
