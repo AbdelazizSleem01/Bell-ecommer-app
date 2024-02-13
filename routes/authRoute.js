@@ -55,4 +55,5 @@ router.put("/orders-status/:orderId", requireSignIn, isAdmin, orderStatusControl
 // Role update
 
 router.put("/role-update/:id", requireSignIn, isAdmin, roleUpdateController)
+
 export default router;

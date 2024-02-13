@@ -67,8 +67,10 @@
     "Quantity": "الكميـة",
     "description": "الوصـف",
     "Price": "السعـر",
+    "Remove": "إزالة",
     "$": "EGP",
     "Search Result": "نتـائـج البحـث",
     "Found": "تـم العثـور علـى",
     "Forgot Password": " نسيـت كلمـة المرور"
+    
 }

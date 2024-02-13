@@ -451,6 +451,7 @@
 
 .hero-section {
     margin: 69px 20px 110px 20px;
+    text-align: center;
 
     & img {
         width: 100%;
@@ -798,6 +799,7 @@
     .web-title {
         font-family: "Honk", system-ui;
         font-size: 32px;
+
         img {
             margin-right: -5px;
             margin-left: 7px;
@@ -817,6 +819,7 @@
     .SearchInput {
         left: 63%;
         width: 500px;
+        caret-color: #996699;
     }
 
     .form-control {

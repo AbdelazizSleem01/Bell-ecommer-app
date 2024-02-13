@@ -96,8 +96,32 @@
             align-items: center;
         }
 
+        .quantity-buttons {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 20px;
+
+            button {
+                padding: 10px;
+                background-color: var(--White);
+                border: var(--Pink) solid 2px;
+                border-radius: 7px;
+                color: var(--Pink);
+                font-weight: 600;
+                box-shadow: var(--Pink) 1px 2px 3px;
+                cursor: pointer;
+                font-size: 20px;
+                width: 50px;
+                &:hover {
+                    opacity: .8;
+                }
+            }
+        }
     }
+
 }
+
 
 /* ============= payment ========== */
 .btn-payment {
@@ -151,7 +175,7 @@
     }
 
     .cart-product {
-        
+
         .product {
             color: var(--White);
             width: 90%;

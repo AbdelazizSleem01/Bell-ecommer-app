@@ -8,7 +8,7 @@ export default function useCategory() {
 
     const getCategory = async () => {
         try {
-            const { data } = await axios.get('/api/v1/category/get-categories')
+            const { data } = await axios.get('https://bellissimo-ecommer-app.onrender.com/api/v1/category/get-categories')
             setCategoryList(data.category)
         } catch (err) {
             console.log('Error: ', err)
