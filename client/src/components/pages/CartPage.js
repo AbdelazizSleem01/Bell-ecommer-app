@@ -82,7 +82,7 @@ const CartPage = () => {
                 throw new Error("Payment instance is not available");
             }
             const { nonce } = await instance.requestPaymentMethod();
-            const { data } = await axios.post('/api/v1/product/braintree/payment', {
+            const { data } = await axios.post('https://bellissimo-ecommer-app.onrender.com/api/v1/product/braintree/payment', {
                 nonce,
                 cart
             });
