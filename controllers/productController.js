@@ -284,36 +284,6 @@ export const productListController = async (req, res) => {
   }
 };
 
-// product list page
-// export const productListController = async (req, res) => {
-//     try {
-//         const perPage = 4;
-//         const page = req.params.page;
-//         const products = await productModel
-//             .find({})
-//             //تُستخدم لتحديد الحقول التي ستُعاد في النتائج
-//             .select("_photo")
-//             //ستخدم لتخطي عدد معين من الوثائق في النتائج
-//             .skip((page - 1) * perPage)
-//             //تُستخدم لتحديد الحد الأقصى لعدد الوثائق التي يتم إرجاعها في النتائج.
-//             .limit(perPage)
-//             //تُستخدم لترتيب الوثائق في النتائج بناءً على حقل محدد
-//             // createdAt : يعتبر هذا الحقل شائعًا في العديد من التطبيقات حيث يُسجل تاريخ ووقت إنشاء السجل لاحقة في قاعدة البيانات.
-//             // ونستخدم (1-) ليقوم بعمليه العد التنازلى ليستخدم الاحدث ثم الاقدم
-//             .sort({ createdAt: -1 })
-//         res.status(200).send({
-//             success: true,
-//             products,
-//         })
-//     } catch (err) {
-//         console.log(err);
-//         res.status(400).send({
-//             success: false,
-//             message: 'Error in per page '
-//         })
-//     }
-// }
-
 // search product
 export const searchProductController = async (req, res) => {
   try {
@@ -387,69 +357,64 @@ export const categoryProductController = async (req, res) => {
     });
   }
 };
-//payment getway
-//token
+
+
 export const brainTreeTokenController = async (req, res) => {
   try {
-    gateway.clientToken.generate({}, function (err, response) {
+    gateway.clientToken.generate({}, (err, response) => {
       if (err) {
-        res.status(500).send(err);
-      } else {
-        res.send(response);
+        console.error("Braintree Token Error:", err);
+        return res.status(500).json({ error: "Failed to generate client token" });
       }
+      res.json({ clientToken: response.clientToken });
     });
   } catch (error) {
-    console.log(error);
+    console.error("Server Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-//payment
 export const brainTreePaymentController = async (req, res) => {
   try {
-    const { cart, nonce } = req.body;
-    let total = 0;
-    let productsToUpdate = []; // Create an array to store products that need to be updated
-
-    cart.forEach((product) => {
-      total += product.price;
-      if (product.quantity < product.quantityInCart) {
-        throw new Error(`Insufficient quantity for product ${product._id}`);
-      }
-      productsToUpdate.push({
-        id: product._id,
-        quantity: product.quantity - product.quantityInCart,
-      });
-    });
+    const { nonce, cart } = req.body;
+    let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     let newTransaction = gateway.transaction.sale(
       {
         amount: total,
         paymentMethodNonce: nonce,
-        options: {
-          submitForSettlement: true,
-        },
+        options: { submitForSettlement: true },
       },
-      async function (error, result) {
-        if (result) {
-          // Update the quantity of products
-          for (const product of productsToUpdate) {
-            await productModel.findByIdAndUpdate(product.id, {
-              quantity: product.quantity,
-            });
-          }
-          const order = new orderModel({
+      async (error, result) => {
+        if (result?.success) {
+          const order = await new orderModel({
             products: cart,
             payment: result,
             buyer: req.user._id,
           }).save();
-          res.json({ ok: true });
+
+          res.json({
+            success: true,
+            message: "Payment Successful",
+            orderId: order._id,
+            transactionId: result.transaction.id,
+            amount: result.transaction.amount,
+          });
         } else {
-          res.status(500).send(error);
+          res.status(500).json({
+            success: false,
+            message: error?.message || "Payment Failed",
+            braintreeError: error,
+          });
         }
       }
     );
   } catch (error) {
     console.log(error);
-    res.status(400).json({ error: error.message });
+    res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
   }
 };

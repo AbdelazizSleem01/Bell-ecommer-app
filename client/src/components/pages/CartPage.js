@@ -79,45 +79,58 @@ const CartPage = () => {
     }
   };
 
-  //getpayment
-  const getToken = async () => {
-    try {
-      const { data } = await axios.get(
-        "https://bellissimo-ecommer-app.onrender.com/api/v1/product/braintree/token"
-      );
-      setClientToken(data?.clientToken);
-      // console.log(data.response)
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    getToken();
+    const getToken = async () => {
+      try {
+        console.log("Fetching Braintree Token...");
+        console.log("Token being sent:", auth.token);
+        localStorage.removeItem("token");
+
+        const { data } = await axios.get(
+          "http://localhost:8080/api/v1/product/braintree/token",
+          {
+            headers: { Authorization: `Bearer ${auth?.token}` },
+          }
+        );
+        console.log("Braintree Token:", data.clientToken);
+        setClientToken(data.clientToken);
+      } catch (error) {
+        console.error("Error fetching Braintree token:", error);
+      }
+    };
+    if (auth?.token) getToken();
   }, [auth?.token]);
 
-  //handle payment
+
+
   const handlePayment = async () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
+
       const { data } = await axios.post(
-        "https://bellissimo-ecommer-app.onrender.com/api/v1/product/payment",
+        "http://localhost:8080/api/v1/product/braintree/payment",
+        { nonce, cart },
         {
-          nonce,
-          cart,
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+            "Content-Type": "application/json",
+          },
         }
       );
+
       setLoading(false);
       localStorage.removeItem("cart");
       setCart([]);
       navigate("/dashboard/user/orders");
       toast.success("Payment Completed Successfully");
     } catch (error) {
-      console.log(error);
+      console.error("Payment Error:", error);
       setLoading(false);
+      toast.error("Payment Failed. Please try again.");
     }
   };
+
 
   return (
     <Layout title={t("Cart_title")}>
@@ -132,9 +145,8 @@ const CartPage = () => {
           </h1>
           <h4 className="cart-length-auth">
             {cart?.length
-              ? `You Have ( ${cart.length} ) items in your cart ${
-                  auth?.token ? "" : "Please login to checkout"
-                } `
+              ? `You Have ( ${cart.length} ) items in your cart ${auth?.token ? "" : "Please login to checkout"
+              } `
               : `${t("Cart_Empty")}`}
           </h4>
         </div>
@@ -264,9 +276,6 @@ const CartPage = () => {
                   <DropIn
                     options={{
                       authorization: clientToken,
-                      // paypal: {
-                      //     flow: "vault",
-                      // },
                     }}
                     onInstance={(instance) => setInstance(instance)}
                   />

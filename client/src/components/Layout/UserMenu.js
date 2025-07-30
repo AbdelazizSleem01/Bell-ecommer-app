@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
-import cookies from 'js-cookie';
 import '../../styles/AdminDashBoard.css'
 
 const UserMenu = () => {

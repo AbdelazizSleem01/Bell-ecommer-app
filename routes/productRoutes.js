@@ -16,12 +16,11 @@ import {
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import ExpressFormidable from "express-formidable";
-
 import express from "express";
+
 const router = express.Router();
 
-// routes of create product
-
+// Create Product
 router.post(
   "/create-product",
   requireSignIn,
@@ -29,8 +28,8 @@ router.post(
   ExpressFormidable(),
   createProductController
 );
-// routes of update product
 
+// Update Product
 router.put(
   "/update-product/:pid",
   requireSignIn,
@@ -38,29 +37,40 @@ router.put(
   ExpressFormidable(),
   updateProductController
 );
-//get products
-router.get("/get-product", getProductController);
-//single product
-router.get("/get-product/:slug", getSingleProductController);
-//get photo
-router.get("/product-photo/:pid", productPhotoController);
-//delete rproduct
-router.delete("/delete-product/:pid", deleteProductController);
-//Filter product
-router.post("/product-filter", filterProductController);
-// product count
-router.get("/product-count", productCountController);
-// product per page
-router.get("/product-list/:page", productListController);
-// product search
-router.get("/search/:keyword", searchProductController);
-//Similar product
-router.get("/related-product/:pid/:cid", relatedProductController);
-//category  product
-router.get("/product-category/:slug", categoryProductController);
-//Payment  route , token
-router.get("/braintree/token", brainTreeTokenController);
-//payments
 
-//export
+// Get Products
+router.get("/get-product", getProductController);
+
+// Single Product
+router.get("/get-product/:slug", getSingleProductController);
+
+// Get Photo
+router.get("/product-photo/:pid", productPhotoController);
+
+// Delete Product
+router.delete("/delete-product/:pid", requireSignIn, isAdmin, deleteProductController);
+
+// Filter Products
+router.post("/product-filter", filterProductController);
+
+// Product Count
+router.get("/product-count", productCountController);
+
+// Products per Page
+router.get("/product-list/:page", productListController);
+
+// Search Products
+router.get("/search/:keyword", searchProductController);
+
+// Related Products
+router.get("/related-product/:pid/:cid", relatedProductController);
+
+// Category Products
+router.get("/product-category/:slug", categoryProductController);
+
+// Braintree Payment Routes
+router.get("/braintree/token", brainTreeTokenController);
+
+router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
+
 export default router;

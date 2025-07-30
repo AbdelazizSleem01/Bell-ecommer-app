@@ -40,7 +40,7 @@ const DarkMode = () => {
     }, [currentLanguage, t]);
 
 
-    const handleClick = () => {
+    const handleClick = () => { 
         setTheme(!theme);
     };
 

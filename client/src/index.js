@@ -13,7 +13,7 @@ import './index.css';
 import 'antd/dist/reset.css';
 
 
-i18next
+   i18next
   .use(HttpApi)
   .use(LanguageDetector)
   .use(initReactI18next)

@@ -8,14 +8,13 @@ import useCategory from '../../hooks/useCategory';
 import { useCart } from '../../context/cart';
 import { Badge } from 'antd';
 import { useTranslation } from 'react-i18next';
-import '../../styles/HomePage.css'
+import '../../styles/HomePage.css';
 
 const Header = () => {
     const [auth, setAuth] = useAuth();
     const [cart] = useCart();
     const categoryList = useCategory();
     const [isLoggedIn, setIsLoggedIn] = useState();
-
     const { t } = useTranslation();
 
     const handleLogout = () => {
@@ -30,11 +29,8 @@ const Header = () => {
 
     useEffect(() => {
         const userIsLoggedIn = auth.user;
-
         setIsLoggedIn(userIsLoggedIn);
     }, []);
-
-
 
     return (
         <div>
@@ -51,11 +47,14 @@ const Header = () => {
                     >
                         <span className="navbar-toggler-icon" />
                     </button>
+                    
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <Link to="/" className=" web-title ">
-                            <img src='/images/letter-b.png' alt='LOGO' />{t("LOGO")}
+                        <Link to="/" className="web-title">
+                            <img src='/images/letter-b.png' alt='LOGO' />
+                            {t("LOGO")}
                         </Link>
-                        <ul className="navbar-nav ms-auto  ">
+                        
+                        <ul className="navbar-nav ms-auto">
                             <div className="SearchInput">
                                 <SearchInput />
                             </div>
@@ -65,6 +64,7 @@ const Header = () => {
                                     {t("Home")}
                                 </NavLink>
                             </li>
+                            
                             <li className={`${isLoggedIn ? "nav-item dropdown Ar-nav" : "nav-item dropdown logoutAr"}`}>
                                 <Link
                                     className="nav-link text-capitalize"
@@ -91,6 +91,7 @@ const Header = () => {
                                     ))}
                                 </ul>
                             </li>
+                            
                             {!auth?.user ? (
                                 <>
                                     <li className={`${isLoggedIn ? "nav-item Ar-nav" : "nav-item logoutAr"}`}>
@@ -121,14 +122,12 @@ const Header = () => {
                                             >
                                                 {auth?.user?.name[0]}
                                             </h4>
-
                                         </NavLink>
-                                        <ul className="dropdown-menu ">
+                                        <ul className="dropdown-menu">
                                             <li>
                                                 <NavLink
-                                                    to={`/dashboard/${auth?.user?.role === "Admin" ? 'admin' : 'user'
-                                                        }`}
-                                                    className="dropdown-item  text-capitalize"
+                                                    to={`/dashboard/${auth?.user?.role === "Admin" ? 'admin' : 'user'}`}
+                                                    className="dropdown-item text-capitalize"
                                                 >
                                                     {t("Dashboard")}
                                                 </NavLink>
@@ -146,7 +145,8 @@ const Header = () => {
                                     </li>
                                 </>
                             )}
-                            <li className={`${isLoggedIn ? "nav-item Ar-nav" : "nav-item logoutAr"}`} >
+                            
+                            <li className={`${isLoggedIn ? "nav-item Ar-nav" : "nav-item logoutAr"}`}>
                                 <Badge count={cart?.length} className='Num' showZero>
                                     <NavLink to="/cart" className="nav-link nav-cart text-capitalize">
                                         {t("Cart")}
