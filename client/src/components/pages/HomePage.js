@@ -22,11 +22,11 @@ const HomePage = () => {
   const [cart, setCart] = useCart();
   const navigate = useNavigate();
 
-  // Language
-
+  // Language settings
   const currentLanguageCode = cookies.get("i18next") || "en";
   const { t } = useTranslation();
 
+  // Fetch all categories
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get(
@@ -40,6 +40,7 @@ const HomePage = () => {
     }
   };
 
+  // Fetch all products
   const getAllProducts = async () => {
     try {
       setLoading(true);
@@ -54,6 +55,7 @@ const HomePage = () => {
     }
   };
 
+  // Get total product count
   const getTotal = async () => {
     try {
       const { data } = await axios.get(
@@ -64,20 +66,8 @@ const HomePage = () => {
       console.log("Error:", error);
     }
   };
-  useEffect(() => {
-    getAllCategory();
-    getTotal();
-    loadMore();
-    getAllProducts();
-  }, [page]);
 
-  useEffect(() => {
-    if (page === 1) return;
-    loadMore();
-  }, [page]);
-
-  //Loadmore Function
-
+  // Load more products
   const loadMore = async () => {
     try {
       setLoading(true);
@@ -93,6 +83,7 @@ const HomePage = () => {
     }
   };
 
+  // Handle category filter
   const handleFilter = (value, id) => {
     let all = [...checked];
     if (value) {
@@ -103,20 +94,12 @@ const HomePage = () => {
     setChecked(all);
   };
 
-  useEffect(() => {
-    if (!checked.length || !radio.length) {
-      filterProduct();
-    }
-  }, [checked, radio]);
-
+  // Filter products based on selected filters
   const filterProduct = async () => {
     try {
       const response = await axios.post(
         "https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-filter",
-        {
-          checked,
-          radio,
-        }
+        { checked, radio }
       );
       setProducts(response.data.products);
     } catch (error) {
@@ -124,6 +107,7 @@ const HomePage = () => {
     }
   };
 
+  // Add product to cart
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item._id === product._id);
     if (existingProduct) {
@@ -145,8 +129,28 @@ const HomePage = () => {
     }
   };
 
+  // Effects
+  useEffect(() => {
+    getAllCategory();
+    getTotal();
+    loadMore();
+    getAllProducts();
+  }, [page]);
+
+  useEffect(() => {
+    if (page === 1) return;
+    loadMore();
+  }, [page]);
+
+  useEffect(() => {
+    if (!checked.length || !radio.length) {
+      filterProduct();
+    }
+  }, [checked, radio]);
+
   return (
     <Layout title={t("app_title")}>
+      {/* Hero Banner Slider */}
       <div className="hero-section container-fluid">
         <Swiper className="mySwiper">
           <SwiperSlide>
@@ -166,9 +170,12 @@ const HomePage = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="container-fluid row mb-5 ">
-        <div className="col-md-12 col-lg-4 mx-auto filter ">
-          <h4 className="text-center">{t("Filter_By_Category")} </h4>
+
+      {/* Main Content */}
+      <div className="container-fluid row mb-5">
+        {/* Filters Section */}
+        <div className="col-md-12 col-lg-4 mx-auto filter">
+          <h4 className="text-center">{t("Filter_By_Category")}</h4>
           <div className="d-flex flex-column">
             {categories.map((category) => (
               <Checkbox
@@ -180,6 +187,7 @@ const HomePage = () => {
               </Checkbox>
             ))}
           </div>
+
           <h4 className="text-center mt-4">{t("Filter_By_Price")}</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
@@ -192,6 +200,7 @@ const HomePage = () => {
               ))}
             </Radio.Group>
           </div>
+
           <div className="d-flex flex-column">
             <button
               className="btn btn-filter mt-4"
@@ -202,29 +211,31 @@ const HomePage = () => {
             </button>
           </div>
         </div>
+
+        {/* Products Section */}
         <div className="col-md-12 col-lg-9 products">
           <h1 className="mx-auto product-title">{t("All_Products")}</h1>
+          
           <div className="d-flex flex-wrap mx-auto">
             {products.map((product) => (
-              <div className="card-home col-md-6 p-2 " key={product._id}>
+              <div className="card-home col-md-6 p-2" key={product._id}>
                 <img
                   src={`https://bellissimo-ecommer-app.onrender.com/api/v1/product/product-photo/${product._id}`}
-                  className="card-img-top pb-3 mx-auto "
+                  className="card-img-top pb-3 mx-auto"
                   alt={product.name}
                 />
+                
                 <div className="card-body border-top pb-2 mt-4">
                   {currentLanguageCode === "ar" ? (
-                    <h5 className="card-title text-center ">
-                      {product.nameAR}
-                    </h5>
+                    <h5 className="card-title text-center">{product.nameAR}</h5>
                   ) : (
-                    <h5 className="card-title text-center ">{product.name}</h5>
+                    <h5 className="card-title text-center">{product.name}</h5>
                   )}
-                  <div className=" des-price">
+                  
+                  <div className="des-price">
                     {currentLanguageCode === "ar" ? (
                       <p className="card-text text-center">
-                        {product.descriptionAR &&
-                        product.descriptionAR.length > 30
+                        {product.descriptionAR && product.descriptionAR.length > 30
                           ? `${product.descriptionAR.substring(0, 60)}...`
                           : product.descriptionAR}
                       </p>
@@ -240,32 +251,32 @@ const HomePage = () => {
 
                   <div className="buttons">
                     <button
-                      className="btn btn-Details "
+                      className="btn btn-Details"
                       onClick={() => navigate(`/product/${product.slug}`)}
                     >
                       {t("More_Details")}
-                      <span class="material-symbols-outlined">visibility</span>
+                      <span className="material-symbols-outlined">visibility</span>
                     </button>
                     <button
-                      className="btn btn-cart "
+                      className="btn btn-cart"
                       onClick={() => addToCart(product)}
                     >
                       {t("Add_To_Cart")}
-                      <span class="material-symbols-outlined">
-                        shopping_cart
-                      </span>
+                      <span className="material-symbols-outlined">shopping_cart</span>
                     </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Load More Button */}
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
                 className="btn btn-loading"
                 onClick={(e) => {
-                  e.defaultPrevented();
+                  e.preventDefault();
                   setPage(page + 1);
                 }}
                 disabled={loading}
